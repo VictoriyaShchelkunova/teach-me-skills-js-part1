@@ -57,7 +57,6 @@ function task2(age) {
     }
     default: {
       result = 'Нет подходящего возраста';
-      break;
     }
 
   }
