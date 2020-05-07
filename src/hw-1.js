@@ -90,8 +90,7 @@ console.log(task3());
  */
 function task4() {
   for (let count = 0; count < 100; count++) {
-    if (count % 5) {
-    } else {
+    if (!(count % 5)) {
       console.log(5);
     }
   }
@@ -105,13 +104,14 @@ task4();
 
 function task5(num, str, bool, val) {
 
-  for(let i = 0; i < arguments.length; i++){
-    arguments[i] = true;
-  }
-
-
   let result = num || str || bool || val; // выражение с || менять нельзя, остальное в ваших руках
 
+  let resultBoolean = Boolean(result);
+  if(resultBoolean){
+    result = resultBoolean
+  } else {
+    result = !resultBoolean;
+  }
 
   return result;
 }
