@@ -89,7 +89,8 @@ console.log(task3());
  */
 function task4() {
   for (let count = 0; count < 100; count++) {
-    if (count % 5 === 0) {
+    if (count % 5) {
+    } else {
       console.log(5);
     }
   }
@@ -100,17 +101,16 @@ task4();
  * В функцию приходят 4 аргумента все разных типов, какие бы не были значения результат всегда должен быть один и тот же, true
  *
  */
+
 function task5(num, str, bool, val) {
-  num = Boolean(num);
-  str = Boolean(str);
-  bool = Boolean(bool);
-  val = Boolean(val);
+
+  for(let i = 0; i < arguments.length; i++){
+    arguments[i] = true;
+  }
+
 
   let result = num || str || bool || val; // выражение с || менять нельзя, остальное в ваших руках
 
-  if (num == false && str == false && bool == false && val == false) {
-    result = true;
-  }
 
   return result;
 }
