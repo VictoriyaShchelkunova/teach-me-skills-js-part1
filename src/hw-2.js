@@ -9,11 +9,19 @@ function task1(num) {
     weight: 30,
     surname: 'Trololo',
   };
-  // ваш код должен быть ниже этой строки
+  for (const key in obj) {
+    if (!isNaN(obj[key])) {
+      obj[key] *= num;
+    }
+  }
 
-  // ваш код должен быть выше этой строки
   return obj;
 }
+
+console.log(task1(2).age);
+console.log(task1(3).height);
+console.log(task1(5).weight);
+
 
 /**
  * Напишите код для суммирования всех значений из obj и сохраните результат в переменной sum.
@@ -27,11 +35,14 @@ function task2(num) {
     d: 1,
     e: 5,
   };
-  // ваш код должен быть ниже этой строки
+  for (const key in obj) {
+    sum += obj[key];
+  }
 
-  // ваш код должен быть выше этой строки
   return sum;
 }
+console.log(task2());
+
 
 /**
  * Напишите код для проверки на существование свойства в объекте. Если свойство property существует в obj,
@@ -39,22 +50,35 @@ function task2(num) {
  */
 function task3(obj, property) {
   let result = null;
-  // ваш код должен быть ниже этой строки
+  for (const key in obj) {
+    if (key === property) {
+      result = true;
+    } else {
+      result = false;
+    }
+  }
 
-  // ваш код должен быть выше этой строки
   return result;
 }
+
+console.log(task3({ name: 'Mike' }, 'name'));
+console.log(task3({ surname: 'Ivanov' }, 'name'));
 
 /**
  * Написать логику, что скопирует все свойства из obj в result.
  */
 function task4(obj) {
   const result = {};
-  // ваш код должен быть ниже этой строки
 
-  // ваш код должен быть выше этой строки
+  for (const key in obj) {
+    result[key] = obj[key];
+  }
+
   return result;
 }
+
+console.log(task4({ name: 'Mike', surname: 'Ivanov' }));
+console.log(task4({ name: 'Kate', surname: 'Petrova' }));
 
 /**
  * Ваша реализацимя должна проверить в каком объекте obj1 или obj2 свойств больше, в переменную result
@@ -62,35 +86,51 @@ function task4(obj) {
  */
 function task5(obj1, obj2) {
   let result = null;
-  // ваш код должен быть ниже этой строки
 
-  // ваш код должен быть выше этой строки
+  let countKeysObj1 = 0;
+  let countKeysObj2 = 0;
+
+  for (const key in obj1) {
+    countKeysObj1 += key ? 1 : 0;
+  }
+  for (const key in obj2) {
+    countKeysObj2 += key ? 1 : 0;
+  }
+
+  result = (countKeysObj1 - countKeysObj2) > 0 ? 1 : 2;
+
   return result;
 }
+
+console.log(task5({ name: 'Mike', surname: 'Ivanov' },
+  { name: 'Kate', surname: 'Petrova', age: '15' }));
 
 /**
  * Написать логику, которая должна удалять все свойства из объекта obj.
  */
 function task6(obj) {
-  // ваш код должен быть ниже этой строки
-
-  // ваш код должен быть выше этой строки
+  for (const key in obj) {
+    delete obj[key];
+  }
   return obj;
 }
+
+console.log(task6({ name: 'Kate', surname: 'Petrova', age: '15' }))
 
 /**
  * Задание с *.
  * Написать цикл (не for..in), который пройдется по объекту obj и выведет все значения в консоль
  */
 function task7(obj) {
-  // ваш код должен быть ниже этой строки
 
-  // ваш код должен быть выше этой строки
+  const arrObjKeys = Object.keys(obj);
 
-  for(/* написать условие */) {
-   console.log();
+  for (let i = 0; i < arrObjKeys.length; i++) {
+    console.log(obj[arrObjKeys[i]]);
   }
 }
+
+task7({ name: 'Kate', surname: 'Petrova', age: '15' });
 
 /**
  * Задание с *.
@@ -105,11 +145,17 @@ function task7(obj) {
  */
 function task8(obj, str) {
   let result = null;
-  // ваш код должен быть ниже этой строки
 
-  // ваш код должен быть выше этой строки
+  obj.toString = function (){
+    return 'Hello ';
+  }
+  
+  result = obj + str;
   return result;
 }
+
+console.log(task8({}, 'Vitalik'));
+console.log(task8({}, 'Katya'));
 
 /**
  * Задание с *.
@@ -117,8 +163,10 @@ function task8(obj, str) {
  */
 function task9() {
   const array = [];
-  // ваш код должен быть ниже этой строки
-
-  // ваш код должен быть выше этой строки
+  for(let i = 0; i < arguments.length; i++){
+    array.push(arguments[i]);
+  }
+  
   return array;
 }
+console.log(task9(1, 'hello', true, null));
