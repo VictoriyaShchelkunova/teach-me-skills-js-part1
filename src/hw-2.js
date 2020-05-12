@@ -123,10 +123,10 @@ console.log(task6({ name: 'Kate', surname: 'Petrova', age: '15' }))
  */
 function task7(obj) {
 
-  const arrObjKeys = Object.keys(obj);
+  const arrObjKeys = Object.values(obj);
 
   for (let i = 0; i < arrObjKeys.length; i++) {
-    console.log(obj[arrObjKeys[i]]);
+    console.log(arrObjKeys[i]);
   }
 }
 
