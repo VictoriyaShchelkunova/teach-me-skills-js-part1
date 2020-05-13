@@ -51,17 +51,12 @@ console.log(task2());
 function task3(obj, property) {
   let result = null;
   for (const key in obj) {
-    if (key === property) {
-      result = true;
-    } else {
-      result = false;
-    }
+    result = key === property ? true : false;
   }
-
   return result;
 }
 
-console.log(task3({ name: 'Mike' }, 'name'));
+console.log(task3({ surname: 'Ivanov', name: 'Mike' }, 'name'));
 console.log(task3({ surname: 'Ivanov' }, 'name'));
 
 /**
@@ -85,21 +80,14 @@ console.log(task4({ name: 'Kate', surname: 'Petrova' }));
  * положите 1 или 2 в зависимости в каком объекте свойств больше
  */
 function task5(obj1, obj2) {
-  let result = null;
 
-  let countKeysObj1 = 0;
-  let countKeysObj2 = 0;
 
-  for (const key in obj1) {
-    countKeysObj1 += key ? 1 : 0;
-  }
-  for (const key in obj2) {
-    countKeysObj2 += key ? 1 : 0;
-  }
+  let countKeysObj1 = Object.keys(obj1).length;
+  let countKeysObj2 = Object.keys(obj2).length;
 
-  result = (countKeysObj1 - countKeysObj2) > 0 ? 1 : 2;
+  return result = (countKeysObj1 - countKeysObj2) > 0 ? 1 : 2;
 
-  return result;
+
 }
 
 console.log(task5({ name: 'Mike', surname: 'Ivanov' },
@@ -123,10 +111,10 @@ console.log(task6({ name: 'Kate', surname: 'Petrova', age: '15' }))
  */
 function task7(obj) {
 
-  const arrObjKeys = Object.values(obj);
+  const arrObjValues = Object.values(obj);
 
-  for (let i = 0; i < arrObjKeys.length; i++) {
-    console.log(arrObjKeys[i]);
+  for (let i = 0; i < arrObjValues.length; i++) {
+    console.log(arrObjValues[i]);
   }
 }
 
@@ -146,10 +134,10 @@ task7({ name: 'Kate', surname: 'Petrova', age: '15' });
 function task8(obj, str) {
   let result = null;
 
-  obj.toString = function (){
+  obj.toString = function () {
     return 'Hello ';
   }
-  
+
   result = obj + str;
   return result;
 }
@@ -163,10 +151,10 @@ console.log(task8({}, 'Katya'));
  */
 function task9() {
   const array = [];
-  for(let i = 0; i < arguments.length; i++){
+  for (let i = 0; i < arguments.length; i++) {
     array.push(arguments[i]);
   }
-  
+
   return array;
 }
 console.log(task9(1, 'hello', true, null));
