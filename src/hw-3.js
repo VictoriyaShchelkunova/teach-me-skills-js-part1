@@ -8,10 +8,9 @@
  */
 function task1(str) {
 
-  let arrFromStr = [...str];
-  for (let i = 0; i < arrFromStr.length; i++) {
-    for (let j = i + 1; j < arrFromStr.length; j++) {
-      if (arrFromStr[i] === arrFromStr[j]) {
+  for (let i = 0; i < str.length; i++) {
+    for (let j = i + 1; j < str.length; j++) {
+      if (str[i] === str[j]) {
         return false;
       }
     }
@@ -25,17 +24,13 @@ console.log(task1('Aaret64ip'));
  * переменную
  */
 function task2(str) {
-  let result = '';
   let arrFromStr = [...str];
-  arrFromStr.forEach(letter => {
-    if (isNaN(letter)) {
-      result += letter;
-    }
-  })
+  const result = arrFromStr.filter(letter => isNaN(letter)).join('');
 
   return result;
 }
 console.log(task2('ab2cd1'));
+console.log(task2('ab2cd1efg35'));
 
 /**
  * arr массив чисел. Нужно найти в массиве найбольшое число и вернуть его
@@ -70,7 +65,7 @@ console.log(task4({
  * Еще пример: str => "Vitalik Skopets". result => "V.S."
  */
 function task5(str) {
-  let arrFromStr = str.split(' ');
+  const arrFromStr = str.split(' ');
   return (`${arrFromStr[0][0]}.${arrFromStr[1][0]}.`);
 }
 console.log(task5("Ivan Ivanov"));
@@ -82,7 +77,7 @@ console.log(task5("Vitalik Skopets"));
  * Примечание: написать эту логику без if и switch!!!!!!!
  */
 function task6(num) {
-  let planets = {
+  const planets = {
     1: 'Mercury',
     2: 'Venus',
     3: 'Earth',
