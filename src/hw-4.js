@@ -1,63 +1,51 @@
-/**
- * Написать функцию, которая будет считать ряд Фибоначчи. Функция должна возвращать массив из чисел
- * Фибоначчи, длина массива будет приходить, как аргумент функции
- */
-function fibonacci(length) {
+// без использования рекурсии;
+let arr = [];
 
+let a = 0;
+arr.push(a);
+
+let b = 1;
+arr.push(b);
+
+let c = 0;
+
+let i = 0;
+
+function getNumbersFibonache(a, b, interval) {
+
+    while (i < interval) {
+        c = a + b;
+        arr.push(c);
+        a = b;
+        b = c;
+        i++;
+    }
+    return arr;
+}
+console.log(getNumbersFibonache(a, b, 10));
+
+// с использованием рекурсии;
+
+let arrNumbers = [];
+
+let firstNum = 0;
+arrNumbers.push(firstNum);
+
+let secondNum = 1;
+arrNumbers.push(secondNum);
+
+let sum = 0;
+
+let counter = 0;
+
+function getArrayOfFibonache(firstNum, secondNum, interval) {
+    sum = firstNum + secondNum;
+    arrNumbers.push(sum);
+    counter++;
+    while (counter < interval) {
+        getArrayOfFibonache(secondNum, sum, interval);
+    }
+    return arrNumbers;
 }
 
-/**
- * Написать свою функцию map
- */
-function map(array, callback) {
-
-}
-
-/**
- * Написать свою функцию filter
- */
-function filter(array, callback) {
-
-}
-
-/**
- * Написать свою функцию indexOf
- */
-function indexOf(array, value, fromIndex) {
-
-}
-
-/**
- * Написать свою функцию reduce
- */
-function reduce(array, callback, acc) {
-
-}
-
-/**
- * Написать свою функцию find
- */
-function find(array, callback) {
-
-}
-
-/**
- * Написать свою функцию sort
- */
-function sort(array, callback) {
-
-}
-
-/**
- * Написать свою функцию Object.keys
- */
-function objectKeys(obj) {
-
-}
-
-/**
- * Написать свою функцию Object.values
- */
-function objectValues(obj) {
-
-}
+console.log(getArrayOfFibonache(firstNum, secondNum, 10));
