@@ -13,7 +13,7 @@ let i = 0;
 
 function getNumbersFibonache(a, b, interval) {
 
-    while (i < interval) {
+    while (i < interval - 2) {
         c = a + b;
         arr.push(c);
         a = b;
@@ -42,7 +42,7 @@ function getArrayOfFibonache(firstNum, secondNum, interval) {
     sum = firstNum + secondNum;
     arrNumbers.push(sum);
     counter++;
-    while (counter < interval) {
+    while (counter < interval - 2) {
         getArrayOfFibonache(secondNum, sum, interval);
     }
     return arrNumbers;
