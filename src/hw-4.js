@@ -164,3 +164,55 @@ console.log(objectValues({
     surname: 'Ivanova',
     age: 23
 }));
+
+//вывод максимального числа из массива(массив может быть абсолютно любой вложенности);
+function getMaxNumber(arr) {
+    return Math.max(...arr.flat(Infinity));
+}
+
+console.log(getMaxNumber([1, 23, [12, 4, 5], 23, 45, [2, [24, [345], 120], 115], 37]));
+
+
+
+// проверка матрицы на уникальность;
+function chekForUniq(arr) {
+
+    let arr1 = JSON.parse(JSON.stringify(arr));           //создаю рабочий массив;
+
+    for (let k = 0; k < arr.length; k++) {                //добавляю новые элементы в рабочий массив;
+        let newArr = [];
+        for (let n = 0; n < arr[k].length; n++) {
+            newArr.push(arr[n][k]);
+        }
+        arr1.push(newArr);
+    };
+
+    arr1.forEach(item => {                                // сортирую все элементы рабочего массива;
+        item.sort((a, b) => {
+            return a - b;
+        })
+    });
+
+    for (let j = 0; j < arr1.length; j++) {               // проверяю на уникальность каждый элемент;
+        for (let i = 0; i < arr1[j].length; i++) {
+            if (arr1[j][i] === arr1[j][i + 1]) {
+                return false;
+            }
+        }
+    }
+    return true;
+};
+
+console.log(chekForUniq([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]));
+console.log(chekForUniq([
+    [1, 2, 3, 7],
+    [4, 5, 6, 3],
+    [7, 8, 9, 3],
+    [2, 4, 5, 1],
+]));
+
+
