@@ -17,7 +17,7 @@ console.log(fibonacci(10));
 function map(array, callback) {
     let arrayResult = [];
     for (let i = 0; i < array.length; i++) {
-        arrayResult[i] = callback(array[i]);
+        arrayResult.push(callback(array[i]));
     }
     return arrayResult;
 }
