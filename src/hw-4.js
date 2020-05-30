@@ -3,7 +3,7 @@
  * Фибоначчи, длина массива будет приходить, как аргумент функции
  */
 function fibonacci(length) {
-    let arr = [0, 1];
+    const arr = [0, 1];
     for (let i = 0; i < length - 2; i++) {
         arr.push(arr[i] + arr[i + 1]);
     }
@@ -15,7 +15,7 @@ console.log(fibonacci(10));
  * Написать свою функцию map
  */
 function map(array, callback) {
-    let arrayResult = [];
+    const arrayResult = [];
     for (let i = 0; i < array.length; i++) {
         arrayResult.push(callback(array[i]));
     }
@@ -32,7 +32,7 @@ console.log(map([3, 27, 15], function (item) {
  * Написать свою функцию filter
  */
 function filter(array, callback) {
-    let arrayResult = [];
+    const arrayResult = [];
     for (let i = 0; i < array.length; i++) {
         if (callback(array[i])) {
             arrayResult.push(array[i]);
@@ -48,7 +48,7 @@ console.log(filter([1, 2, 35, 56], function (item) {
  * Написать свою функцию indexOf
  */
 function indexOf(array, value, fromIndex) {
-    let i = fromIndex ? fromIndex : 0;
+    let i = fromIndex || 0;
     for (; i < array.length; i++) {
         if (array[i] === value) {
             return i;
@@ -99,8 +99,8 @@ function sort(array, callback) {
     if (callback === undefined) {
         for (let j = 0; j < array.length; j++) {
             for (let i = 0; i < array.length; i++) {
-                let first = array[i];
-                let second = array[i + 1];
+                const first = array[i];
+                const second = array[i + 1];
                 if ((second + '') < (first + '')) {
                     array[i] = second;
                     array[i + 1] = first;
@@ -112,8 +112,8 @@ function sort(array, callback) {
     } else {
         for (let j = 0; j < array.length; j++) {
             for (let i = 0; i < array.length; i++) {
-                let first = array[i];
-                let second = array[i + 1];
+                const first = array[i];
+                const second = array[i + 1];
                 if (callback(first, second)) {
                     array[i] = second;
                     array[i + 1] = first;
@@ -136,7 +136,7 @@ console.log(sort([1, 10, 3, 4, 112, 5, 37], function (a, b) {
  * Написать свою функцию Object.keys
  */
 function objectKeys(obj) {
-    let arr = [];
+    const arr = [];
     for (const key in obj) {
         arr.push(key);
     }
@@ -153,7 +153,7 @@ console.log(objectKeys({
  * Написать свою функцию Object.values
  */
 function objectValues(obj) {
-    let arr = [];
+    const arr = [];
     for (const key in obj) {
         arr.push(obj[key]);
     }
@@ -177,7 +177,7 @@ console.log(getMaxNumber([1, 23, [12, 4, 5], 23, 45, [2, [24, [345], 120], 115],
 // проверка матрицы на уникальность;
 function chekForUniq(arr) {
 
-    let arr1 = JSON.parse(JSON.stringify(arr));           //создаю рабочий массив;
+    const arr1 = JSON.parse(JSON.stringify(arr));           //создаю рабочий массив;
 
     for (let k = 0; k < arr.length; k++) {                //добавляю новые элементы в рабочий массив;
         let newArr = [];
