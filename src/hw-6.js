@@ -30,7 +30,7 @@ function task1(tree) {
     if (key === 'value') {
       console.log(`${key} ${tree[key]}`);
     } else {
-      task1(tree[key].forEach(item => task1(item)));
+      tree[key].forEach(item => task1(item));
     }
   }
 };
