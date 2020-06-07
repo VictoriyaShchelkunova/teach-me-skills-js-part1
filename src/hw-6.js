@@ -26,12 +26,12 @@ const tree = {
 };
 
 function task1(tree) {
-  for (const key in tree) {
-    if (key === 'value') {
-      console.log(`${key} ${tree[key]}`);
-    } else {
-      tree[key].forEach(item => task1(item));
-    }
-  }
+  console.log(tree.value);
+
+  if (!tree.children || !tree.children.length) {
+    return;
+  };
+
+  tree.children.forEach(task1);
 };
 task1(tree);
