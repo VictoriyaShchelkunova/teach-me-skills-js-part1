@@ -91,29 +91,36 @@ for (let i = 0; i < table.length; i++) {
         }
 
     }
-}
+};
 
-document.body.prepend(tableElement);
+const trCollection = document.getElementsByTagName('tr');
+const firstColumn = [];
 
-const frstColumn = document.querySelectorAll("td:first-child");
-for (let i = 0; i < frstColumn.length; i++) {
-    if (!frstColumn[i].nextElementSibling.innerText) {
-        frstColumn[i].setAttribute('colspan', '2');
-        frstColumn[i].nextElementSibling.remove();
+for (let i = 0; i < trCollection.length; i++) {
+    firstColumn.push(trCollection[i].firstElementChild);
+};
+
+for (let i = 0; i < firstColumn.length; i++) {
+    if (!firstColumn[i].nextElementSibling.innerText) {
+        firstColumn[i].setAttribute('colspan', '2');
+        firstColumn[i].nextElementSibling.remove();
     }
 };
 
-const lastColumn = document.querySelector("th:last-child");
-lastColumn.style.width = '90px';
+const thCollection = document.getElementsByTagName('thead')[0];
+thCollection.lastElementChild.style.width = '90px';
 
-const secondColumn = document.querySelector("th:nth-child(2)");
-secondColumn.style.width = '300px';
+thCollection.children[0].style.width = '300px';
 
+thCollection.children[2].style.width = '60px';
 
-const penultColumn = document.querySelector("th:nth-child(3)");
-penultColumn.style.width = '60px';
+const tdCollection = document.getElementsByTagName('td');
 
-const redElements = document.querySelectorAll("[colspan = '2']");
-for (let i = 0; i < redElements.length; i++) {
-    redElements[i].style.color = 'red';
+for (let i = 0; i < tdCollection.length; i++) {
+    if(tdCollection[i].getAttribute('colspan')){
+        tdCollection[i].style.color = 'red';
+    };    
 };
+
+
+document.body.prepend(tableElement);
