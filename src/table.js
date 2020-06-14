@@ -34,7 +34,6 @@ tableElement.style.cssText = 'width: 800px; border: 1px solid black; font-family
 const thead = document.createElement('thead');
 tableElement.append(thead);
 
-
 const theadColumns = Object.keys(table[0]);
 
 theadColumns.forEach(columnName => {
@@ -49,14 +48,20 @@ theadColumns.forEach(columnName => {
 
 });
 
+thead.lastElementChild.style.width = '90px';
+
+thead.children[0].style.width = '300px';
+
+thead.children[2].style.width = '60px';
+
 const tbody = document.createElement('tbody');
 tableElement.append(tbody);
 
+const trCollection = [];
+const tdCollection = [];
 for (let i = 0; i < table.length; i++) {
     const tr = document.createElement('tr');
     tableElement.append(tr);
-
-
     for (let j = 0; j < theadColumns.length; j++) {
         const td = document.createElement('td');
 
@@ -75,7 +80,6 @@ for (let i = 0; i < table.length; i++) {
                         ul.append(li);
                         tr.append(td);
                         td.style.cssText = 'border: 1px double black; color: blue';
-
                     }
                 }
                 continue;
@@ -89,11 +93,13 @@ for (let i = 0; i < table.length; i++) {
         if (theadColumns[j] === 'name') {
             td.style.textAlign = 'center';
         }
-
+        tdCollection.push(td);
     }
+
+    trCollection.push(tr);
 };
 
-const trCollection = document.getElementsByTagName('tr');
+
 const firstColumn = [];
 
 for (let i = 0; i < trCollection.length; i++) {
@@ -107,19 +113,10 @@ for (let i = 0; i < firstColumn.length; i++) {
     }
 };
 
-const thCollection = document.getElementsByTagName('thead')[0];
-thCollection.lastElementChild.style.width = '90px';
-
-thCollection.children[0].style.width = '300px';
-
-thCollection.children[2].style.width = '60px';
-
-const tdCollection = document.getElementsByTagName('td');
-
 for (let i = 0; i < tdCollection.length; i++) {
-    if(tdCollection[i].getAttribute('colspan')){
+    if (tdCollection[i].getAttribute('colspan')) {
         tdCollection[i].style.color = 'red';
-    };    
+    };
 };
 
 
