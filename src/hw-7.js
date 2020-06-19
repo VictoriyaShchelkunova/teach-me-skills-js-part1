@@ -221,6 +221,10 @@ const button = document.getElementById('button');
 
 const ul = document.createElement('ul');
 
+const buttonAdd = document.getElementById('buttonAdd');
+
+const buttonDelete = document.getElementById('buttonDelete');
+
 function createList(list) {
 
     list.forEach(elem => {
@@ -239,14 +243,14 @@ function createList(list) {
 
         li.setAttribute('id', elem.id);
         li.setAttribute('data-userId', elem.userId);
-        
+
 
         ul.append(li);
 
-        
+
     });
 
-    button.after(ul);
+    buttonDelete.after(ul);
 };
 
 
@@ -258,20 +262,69 @@ function showList() {
 
 button.addEventListener('click', showList);
 
-ul.addEventListener('click', function (event) {
+// ul.addEventListener('click', function (event) {
 
-    const currentElement = event.target    
-   
-    if (currentElement.localName === 'span') {        
-       currentElement.parentElement.remove();
+//     const currentElement = event.target
 
-        list.splice(list.indexOf(elem => elem.id === parentElement.id), 1);
+//     if (currentElement.localName === 'span') {
+//         currentElement.parentElement.remove();
 
-        if (!list.length) {
-            const span = document.createElement('span')
-            span.innerText = 'Список пуст';
-            document.body.prepend(span);
-        }
-    }
+//         list.splice(list.indexOf(elem => elem.id === parentElement.id), 1);
+
+//         if (!list.length) {
+//             const span = document.createElement('span')
+//             span.innerText = 'Список пуст';
+//             document.body.prepend(span);
+//         }
+//     }
+// });
+
+const input = document.getElementById('input');
+
+const userId = 3;
+let id = 36;
+const completed = false;
+
+buttonAdd.addEventListener('click', function () {
+    let title = input.value;
+    list.push({
+        userId,
+        id,
+        title,
+        completed,
+    });
+
+
+    const li = document.createElement('li');
+
+    const checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.checked = completed;
+
+    li.prepend(checkbox);
+
+    const span = document.createElement('span');
+    span.innerText = title;
+
+    checkbox.after(span);
+
+    li.setAttribute('id', id);
+    li.setAttribute('data-userId', userId);
+
+
+    ul.append(li);
+
+    input.value = '';
+    ++id;
 });
 
+buttonDelete.addEventListener('click', function () {
+    const checkboxes = [...document.querySelectorAll('[type="checkbox"]')];
+    checkboxes.forEach(checkbox => {
+        const checkboxParent = checkbox.parentElement;
+        if (checkbox.checked) {
+            checkboxParent.remove();
+            list.splice(list.indexOf(item => item.id === checkboxParent.id), 1);
+        }
+    })
+});
