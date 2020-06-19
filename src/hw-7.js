@@ -239,7 +239,7 @@ function createList(list) {
 
         li.setAttribute('id', elem.id);
         li.setAttribute('data-userId', elem.userId);
-        li.classList.add('li-style');
+        
 
         ul.append(li);
 
