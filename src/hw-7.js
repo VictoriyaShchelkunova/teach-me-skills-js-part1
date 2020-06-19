@@ -328,3 +328,49 @@ buttonDelete.addEventListener('click', function () {
         }
     })
 });
+
+
+ul.addEventListener('mouseover', function (event) {
+
+    const currentElement = event.target
+    const buttonChange = document.createElement('button');
+
+    if (currentElement.localName === 'span' && !currentElement.nextElementSibling) {
+        buttonChange.innerText = 'Change';
+        currentElement.after(buttonChange);
+    };
+    function changeLi() {
+        const text = currentElement.innerText;
+
+        const previousElement = currentElement.previousElementSibling;
+        currentElement.remove();
+
+        const inputLi = document.createElement('input');
+        inputLi.setAttribute('type', 'text');
+        inputLi.value = text;
+
+        previousElement.after(inputLi);
+        buttonChange.remove();
+
+        const buttonSave = document.createElement('button');
+        buttonSave.innerText = 'Save';
+        inputLi.after(buttonSave);
+
+        function saveLi() {
+            const inputText = inputLi.value;
+            inputLi.remove();
+
+            const span = document.createElement('span');
+            span.innerText = inputText;
+            previousElement.after(span);
+
+            buttonSave.remove();
+        }
+
+        buttonSave.addEventListener('click', saveLi);
+
+    };
+
+    buttonChange.addEventListener('click', changeLi);
+});
+
