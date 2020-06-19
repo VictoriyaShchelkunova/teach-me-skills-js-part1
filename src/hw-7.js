@@ -243,16 +243,16 @@ function createList(list) {
 
         ul.append(li);
 
-        ul.hidden = true;
+        
     });
 
     button.after(ul);
 };
 
-createList(list);
+
 
 function showList() {
-    ul.hidden = false;
+    createList(list);
     button.remove();
 };
 
