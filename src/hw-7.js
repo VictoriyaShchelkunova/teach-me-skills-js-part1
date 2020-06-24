@@ -330,38 +330,38 @@ buttonDelete.addEventListener('click', function () {
 });
 
 
-ul.addEventListener('mouseover', function (event) {
+ul.addEventListener('mouseover', function ({ target }) {
 
-    const currentElement = event.target
-    const buttonChange = document.createElement('button');
+    const currentElement = target;
+    const buttonChange = createElement('button');
 
     if (currentElement.localName === 'span' && !currentElement.nextElementSibling) {
         buttonChange.innerText = 'Change';
         currentElement.after(buttonChange);
     };
+
     function changeLi() {
+
         const text = currentElement.innerText;
 
         const previousElement = currentElement.previousElementSibling;
         currentElement.remove();
 
-        const inputLi = document.createElement('input');
+        const inputLi = createElement('input');
         inputLi.setAttribute('type', 'text');
         inputLi.value = text;
 
         previousElement.after(inputLi);
         buttonChange.remove();
 
-        const buttonSave = document.createElement('button');
-        buttonSave.innerText = 'Save';
+        const buttonSave = createElement('button', 'Save');
         inputLi.after(buttonSave);
 
         function saveLi() {
             const inputText = inputLi.value;
             inputLi.remove();
 
-            const span = document.createElement('span');
-            span.innerText = inputText;
+            const span = createElement('span', inputText);
             previousElement.after(span);
 
             buttonSave.remove();
@@ -372,5 +372,17 @@ ul.addEventListener('mouseover', function (event) {
     };
 
     buttonChange.addEventListener('click', changeLi);
+
+    const parent = currentElement.closest('li');
+    if (parent) {
+        parent.addEventListener('mouseleave', function () {
+            buttonChange.remove();
+        })
+    };
 });
 
+function createElement(tagName, text) {
+    const element = document.createElement(tagName);
+    element.innerText = text;
+    return element;
+};
