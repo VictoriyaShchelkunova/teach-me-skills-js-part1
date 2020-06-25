@@ -343,41 +343,31 @@ ul.addEventListener('mouseover', function ({ target }) {
     function changeLi() {
 
         const text = currentElement.innerText;
-
         const previousElement = currentElement.previousElementSibling;
-        currentElement.remove();
 
         const inputLi = createElement('input');
         inputLi.setAttribute('type', 'text');
         inputLi.value = text;
 
-        previousElement.after(inputLi);
-        buttonChange.remove();
+        deleteButton(currentElement, previousElement, inputLi, buttonChange);
 
         const buttonSave = createElement('button', 'Save');
         inputLi.after(buttonSave);
 
         function saveLi() {
             const inputText = inputLi.value;
-            inputLi.remove();
-
             const span = createElement('span', inputText);
-            previousElement.after(span);
-
-            buttonSave.remove();
+            deleteButton(inputLi, previousElement, span, buttonSave);
         }
-
         buttonSave.addEventListener('click', saveLi);
-
     };
-
     buttonChange.addEventListener('click', changeLi);
 
     const parent = currentElement.closest('li');
     if (parent) {
         parent.addEventListener('mouseleave', function () {
             buttonChange.remove();
-        })
+        });
     };
 });
 
@@ -385,4 +375,10 @@ function createElement(tagName, text) {
     const element = document.createElement(tagName);
     element.innerText = text;
     return element;
+};
+
+function deleteButton(current, previous, newEl, button) {
+    current.remove();
+    previous.after(newEl);
+    button.remove();
 };
