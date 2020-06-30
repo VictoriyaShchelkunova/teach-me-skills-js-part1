@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <fieldset>
+        <legend>Регистрация</legend>
+        <label>E-mail: <input type="email" required id='email'></label><br>
+        <span id="emailWarn" hidden>Email введен неверно</span><br>
+        <label>Пароль: <input type="password" required id="firstPassword"></label><br>
+        <span id="firstPasswordWarn" hidden>Пароль введен неверно</span><br>
+        <label>Пароль: <input type="password" required id="secondPassword"></label><br>
+        <span id="secondPasswordWarn" hidden>Неправильный пароль</span><br>
+        <input type='submit' id="registr" required>
+    </fieldset>
+
+    <fieldset>
+        <legend>Войти</legend>
+        <label>E-mail: <input type="email" required id='emailLogin'></label><br>
+        <span id="emailWarnLogin" hidden>Email введен неверно</span><br>
+        <label>Пароль: <input type="password" required id="passwordLogin"></label><br>
+        <span id="passwordWarnLogin" hidden>Пароль введен неверно</span><br>
+        <input type='submit' id="login" required>
+    </fieldset>
+
+    <div>
+       
+    </div>
+    <script src="form.js"></script>
+</body>
+
+</html>

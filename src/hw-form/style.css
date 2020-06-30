@@ -1,0 +1,19 @@
+fieldset {
+    width: 300px;
+    display: inline-block;
+    margin-right: 50px;
+}
+
+input {
+    margin-left: 10px;
+}
+
+#email {
+    margin-left: 20px;
+}
+
+span{
+    color: red;
+    font-size: 12px;
+    margin-left: 70px;
+}
