@@ -1,5 +1,5 @@
 const user = {};
-
+const users = localStorage.users ? JSON.parse(localStorage.users) : [];
 const userLogin = {};
 
 const email = document.getElementById('email');
@@ -109,10 +109,8 @@ buttonRegistr.addEventListener('click', registr);
 
 function registr({ target }) {
     if (user.password) {
-        if (!localStorage.users) {
-            localStorage.users = '';
-        };
-        localStorage.users += JSON.stringify(user) + ' ';
+        users.push(user);
+        localStorage.users = JSON.stringify(users);
         email.value = '';
         firstPassword.value = '';
         secondPassword.value = '';
@@ -136,8 +134,8 @@ buttonLogin.addEventListener('click', login);
 
 function login() {
     if (userLogin.email && userLogin.password) {
-        const storage = localStorage.users.split(' ');
-    if (storage.indexOf(JSON.stringify(userLogin)) !== -1) {
+       
+    if (users.find(elem => JSON.stringify(elem) === JSON.stringify(userLogin))){
         alert("вход выполнен успешно");
     } else {
         alert('неправильно введен логин или пароль, попробуйте еще раз')
