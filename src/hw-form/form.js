@@ -119,8 +119,6 @@ function login() {
     };
         emailLogin.value = '';
         passwordLogin.value = '';
-        delete userLogin.email;
-        delete userLogin.password;
     }
 }
 
