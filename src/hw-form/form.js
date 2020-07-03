@@ -37,31 +37,10 @@ const arrSymbles = ['/', '*', '-', '+', '#', '$', '&', '(', ')', '!', '?', '_', 
 
 function checkedValidPassword({ target }) {
 
-    const arrFirstPassword = [...target.value];
+    const password = target.value;
+    const regexp =  /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g;   
 
-    let letterLowerCase = 0;
-    let letterUpperCase = 0;
-    let number = 0;
-    let symble = 0;
-
-    arrFirstPassword.forEach(letter => {
-        if (isNaN(letter)) {
-            if (arrSymbles.indexOf(letter) !== -1) {
-                symble++;
-            } else {
-                if (letter === letter.toUpperCase()) {
-                    letterUpperCase++;
-                } else {
-                    letterLowerCase++;
-                }
-            }
-        } else {
-            number++;
-        }
-    });
-
-    if (letterLowerCase && letterUpperCase && number && symble
-        && arrFirstPassword.length >= 6) {
+    if (regexp.test(password)) {
         if (target.id === 'passwordLogin') {
             userLogin.password = target.value;
         }
@@ -114,8 +93,6 @@ function registr({ target }) {
         email.value = '';
         firstPassword.value = '';
         secondPassword.value = '';
-        delete user.email;
-        delete user.password;
     }
 };
 
@@ -149,3 +126,4 @@ function login() {
 
 //{"email":"smahito89@gmail.com","password":"Hello123$$"} {"email":"preivet@gmail.com","password":"Privet123$$"} 
 
+// /(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{6,}/g
