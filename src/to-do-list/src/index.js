@@ -1,6 +1,6 @@
 
-const getList = require('./getList');
-const createElements = require('./createList');
+import  getList from './getList';
+import  createElements from './createList';
 
 async function showList(){
     const list = await getList();

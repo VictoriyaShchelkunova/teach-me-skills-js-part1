@@ -9,7 +9,7 @@ async function getList() {
     }
 }
 
-module.exports = getList;
 
+export default getList;
 
 

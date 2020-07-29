@@ -90,10 +90,11 @@
 /*!***************************!*\
   !*** ./src/createList.js ***!
   \***************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\r\nconst createElements = function (list) {\r\n    \r\n    const ul = document.createElement('ul');\r\n    list.forEach(element => {\r\n        const li = document.createElement('li');\r\n        li.innerText = element.title;\r\n        ul.prepend(li);\r\n    });\r\n\r\n    document.body.append(ul);\r\n    console.log(ul);    \r\n}\r\n\r\nmodule.exports = createElements;\r\n\r\n\n\n//# sourceURL=webpack:///./src/createList.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n\r\nconst createElements = function (list) {\r\n    \r\n    const ul = document.createElement('ul');\r\n    list.forEach(element => {\r\n        const li = document.createElement('li');\r\n        li.innerText = element.title;\r\n        ul.prepend(li);\r\n    });\r\n\r\n    document.body.append(ul);\r\n    console.log(ul);    \r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (createElements);\r\n\r\n\n\n//# sourceURL=webpack:///./src/createList.js?");
 
 /***/ }),
 
@@ -101,10 +102,11 @@ eval("\r\nconst createElements = function (list) {\r\n    \r\n    const ul = doc
 /*!************************!*\
   !*** ./src/getList.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\r\nasync function getList() {\r\n    try {\r\n        const response = await fetch('https://jsonplaceholder.typicode.com/todos/');\r\n        const list = await response.json();\r\n        return list;\r\n    } catch (e) {\r\n        console.log(e);\r\n    }\r\n}\r\n\r\nmodule.exports = getList;\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/getList.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n\r\nasync function getList() {\r\n    try {\r\n        const response = await fetch('https://jsonplaceholder.typicode.com/todos/');\r\n        const list = await response.json();\r\n        return list;\r\n    } catch (e) {\r\n        console.log(e);\r\n    }\r\n}\r\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (getList);\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./src/getList.js?");
 
 /***/ }),
 
@@ -112,10 +114,11 @@ eval("\r\nasync function getList() {\r\n    try {\r\n        const response = aw
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("\r\nconst getList = __webpack_require__(/*! ./getList */ \"./src/getList.js\");\r\nconst createElements = __webpack_require__(/*! ./createList */ \"./src/createList.js\");\r\n\r\nasync function showList(){\r\n    const list = await getList();\r\n    createElements(list);\r\n}\r\n\r\nshowList();\r\n\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _getList__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getList */ \"./src/getList.js\");\n/* harmony import */ var _createList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createList */ \"./src/createList.js\");\n\r\n\r\n\r\n\r\nasync function showList(){\r\n    const list = await Object(_getList__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\r\n    Object(_createList__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(list);\r\n}\r\n\r\nshowList();\r\n\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

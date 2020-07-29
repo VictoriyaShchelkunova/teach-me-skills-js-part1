@@ -12,5 +12,5 @@ const createElements = function (list) {
     console.log(ul);    
 }
 
-module.exports = createElements;
+export default createElements;
 
