@@ -10,7 +10,7 @@ async function showList(){
 
 showList();
 
-button.addEventListener('click', async ({ target }) => {
+button.addEventListener('click', async () => {
     const element = createNewElement();
     try{
         await fetch('https://jsonplaceholder.typicode.com/todos/', {
