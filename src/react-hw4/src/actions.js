@@ -1,4 +1,4 @@
-import { SAVE_LIST, DELETE_ITEM, ADD_ITEM, CHANGE_ITEM, SAVE_ITEM } from './constants';
+import { SAVE_LIST, DELETE_ITEM, ADD_ITEM, CHANGE_ITEM, SAVE_ITEM, SAVE_CHANGETITLE } from './constants';
 
 export const saveListAction = (list) => ({
   type: SAVE_LIST,
@@ -20,8 +20,13 @@ export const changeItemAction = ({ itemId, title }) => ({
   payload: [itemId, title]
 });
 
-export const saveItemAction = (itemId) => ({
+export const saveItemAction = ({itemId, inputTitle}) => ({
   type: SAVE_ITEM,
+  payload: {itemId, inputTitle},
+});
+
+export const saveChangeTitleAction = ( itemId) => ({
+  type: SAVE_CHANGETITLE,
   payload: itemId,
 });
 

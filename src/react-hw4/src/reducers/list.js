@@ -1,4 +1,4 @@
-import { SAVE_LIST, CHANGE_ITEM, ADD_ITEM, DELETE_ITEM, SAVE_ITEM } from '../constants';
+import { SAVE_LIST, CHANGE_ITEM, ADD_ITEM, DELETE_ITEM, SAVE_ITEM, SAVE_CHANGETITLE } from '../constants';
 
 const defaultState = {
   items: [],
@@ -54,7 +54,28 @@ export const listReducer = (state = defaultState, action) => {
         inputTitle: ''
       }
     }
-    
+    case "CHANGE_TITLE": {
+      debugger
+      return {
+        items: state.items,
+        inputTitle: action.payload
+      }
+    }
+
+    case SAVE_CHANGETITLE: {
+      debugger
+      return {
+        items: state.items.map((item) => {
+          if (item.id !== action.payload) {
+            return item;
+          } else {
+            return {id: action.payload, input: false, title: state.inputTitle}
+          }
+        }),
+        inputTitle: action.payload
+      }
+    }
+
     default: {
       return state;
     }

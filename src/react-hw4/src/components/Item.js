@@ -1,21 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteItemAction } from '../actions';
-import { changeItemAction, saveItemAction, changeTitleAction } from '../actions';
+import { changeItemAction, saveItemAction, saveChangeTitleAction} from '../actions';
 
 
 
-const Item = ({ title, deleteItem, itemId, onChangeItem, input, onSaveItem, inputTitle }) => {
+const Item = ({ title, deleteItem, itemId, onChangeItem, input, inputTitle, onChangeTitle, onSaveChangeTitle }) => {
   
   const onChange = ({ target }) => {
     inputTitle = target.value
+    onChangeTitle(inputTitle);
   }
   
   if (input) {
     return (
       <>
         <li><input id={itemId} value={inputTitle} onChange={onChange}></input>
-        <button onClick={onSaveItem}>Save</button></li>
+        <button onClick={onSaveChangeTitle}>Save</button></li>
       </>
     )
   } else {
@@ -37,6 +38,11 @@ const mapDispatchToProps = (dispatch, { itemId, title}) => ({
   deleteItem: () => dispatch(deleteItemAction(itemId)),
   onChangeItem: () => dispatch(changeItemAction({ itemId, title })),
   onSaveItem: () => dispatch(saveItemAction(itemId)),
+  onChangeTitle: (inputTitle) => dispatch({
+    type: 'CHANGE_TITLE',
+    payload: inputTitle
+  }),
+  onSaveChangeTitle: () => dispatch(saveChangeTitleAction(itemId))
 });
 
 export default connect(
